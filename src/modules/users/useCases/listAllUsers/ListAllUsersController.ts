@@ -12,7 +12,7 @@ class ListAllUsersController {
   constructor(private listAllUsersUseCase: ListAllUsersUseCase) {}
 
   handle(request: Request, response: Response): Response {
-    const { user_id }: IncomingHttpHeaders = request.headers;
+    const { user_id } = request.headers;
 
     try {
       const listAll = this.listAllUsersUseCase.execute({ user_id });

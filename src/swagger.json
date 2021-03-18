@@ -1,0 +1,79 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Desafio 4 Documentation",
+    "description": "This is an API",
+    "version": "1.0.0",
+    "contact": {
+      "email": "matheuskael.silva@gmail.com"
+    }
+  },
+  "components": {
+    "schemas": {
+      "user": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "admin": { "type": "boolean" },
+          "created_at": { "type": "number" },
+          "updated_at": { "type": "number" }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "summary": "Create a user",
+        "description": "Create a new User",
+        "requestBody": {
+          "content": {
+            "aplication/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A user object",
+            "content": {
+              "aplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/user"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/:user_id": {
+      "patch": {
+        "summary": "Turn user to admin",
+        "description": "Turn an regular user to admin",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "user_id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
