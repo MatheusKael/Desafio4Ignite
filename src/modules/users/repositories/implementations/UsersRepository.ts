@@ -54,11 +54,6 @@ class UsersRepository implements IUsersRepository {
 
     Object.assign(user, { admin: true });
 
-    const index = this.users.indexOf(user);
-    this.users.splice(index, 1);
-
-    this.users.push(user);
-
     return user;
   }
 
